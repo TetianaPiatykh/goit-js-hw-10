@@ -21,7 +21,7 @@ function fetchCountriesSearch(e) {
     if (inputText !== '') {
         fetchCountries(inputText).then(country => {
            if (country.length > 10) {
-              Notify.info('Too many matches found. Please enter a more specific name.');
+              Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
             }
             else if (country.length >= 2 && country.length <= 10) {
                 // console.log(renderCountryList());
@@ -35,7 +35,7 @@ function fetchCountriesSearch(e) {
            }
            else if (Number(response.status) === 404) {
                countryInfo.innerHTML = '';
-               Notify.failure('Oops, there is no country with that name');
+               Notiflix.Notify.failure('Oops, there is no country with that name');
             }
        }).catch(error => console.log(error))
     }
