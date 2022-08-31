@@ -15,13 +15,13 @@ input.addEventListener('input', debounce(fetchCountriesSearch, DEBOUNCE_DELAY));
 function fetchCountriesSearch(e) { 
     e.preventDefault();
     const inputText = e.target.value.trim();
-    // console.log(inputText);
+    console.log(inputText);
     
 
     if (inputText !== '') {
         fetchCountries(inputText).then(country => {
            if (country.length > 10) {
-              Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+              Notify.info('Too many matches found. Please enter a more specific name.');
             }
             else if (country.length >= 2 && country.length <= 10) {
                 // console.log(renderCountryList());
@@ -35,7 +35,7 @@ function fetchCountriesSearch(e) {
            }
            else if (Number(response.status) === 404) {
                countryInfo.innerHTML = '';
-               Notiflix.Notify.failure('Oops, there is no country with that name');
+               Notify.failure('Oops, there is no country with that name');
             }
        }).catch(error => console.log(error))
     }
