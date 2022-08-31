@@ -32,11 +32,18 @@ function fetchCountriesSearch(e) {
 
                 countryList.innerHTML = '';
                 renderCountryInfo(country);
-           }
-           else if (Number(response.status) === 404) {
-               countryInfo.innerHTML = '';
+           } else {
                Notiflix.Notify.failure('Oops, there is no country with that name');
-            }
+               countryInfo.innerHTML = '';
+               countryList.innerHTML = '';
+           }
+            
+        //    else if (response.status.value === 404) {
+           
+        //        Notiflix.Notify.failure('Oops, there is no country with that name');
+        //            countryList.innerHTML = '';
+        //        countryInfo.innerHTML = '';
+        //     }
        }).catch(error => console.log(error))
     }
 
